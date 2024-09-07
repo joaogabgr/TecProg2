@@ -17,16 +17,15 @@ export default class ImpressaorCliente implements Impressor {
             + `| Nome social: ${this.cliente.NomeSocial}\n`
             + `| Data de nascimento: ${this.cliente.DataNascimento.toLocaleDateString()}\n`
             + `| Data de cadastro: ${this.cliente.DataCadastro.toLocaleDateString()}\n`
-            + this.cliente.Dependentes.forEach(e => {
-                console.log(e.Nome);
-                
-            })
+            + `${this.cliente.Dependentes.map(d => `| Dependente: ${d.Nome}`).join('\n')}`
 
-        this.impressor = new ImpressorEndereco(this.cliente.Endereco)
-        impressao = impressao + `\n${this.impressor.imprimir()}`
+        if (this.cliente.Titular == undefined) {
+            this.impressor = new ImpressorEndereco(this.cliente.Endereco)
+            impressao = impressao + `\n${this.impressor.imprimir()}`
 
-        this.impressor = new ImpressorDocumentos(this.cliente.Documentos)
-        impressao = impressao + `\n${this.impressor.imprimir()}`
+            this.impressor = new ImpressorDocumentos(this.cliente.Documentos)
+            impressao = impressao + `\n${this.impressor.imprimir()}`
+        }
 
         impressao = impressao + `\n****************************`
         return impressao
