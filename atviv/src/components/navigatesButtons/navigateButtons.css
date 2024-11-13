@@ -1,0 +1,11 @@
+.navigateButton {
+    background-color: var(--color-2);
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--color-5);
+    padding: var(--padding);
+    text-align: center;
+    display: inline-block;
+    font-size: var(--font-size-5);
+    cursor: pointer;
+}
