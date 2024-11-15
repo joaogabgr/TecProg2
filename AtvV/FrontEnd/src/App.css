@@ -1,0 +1,117 @@
+/* VARIAVEIS GLOBAIS */
+:root {
+  --color-1: #ffffff;
+  --color-2: #a795a5;
+  --color-3: #7a959e;
+  --color-4: #424e5e;
+  --color-5: #3b2b46;
+
+  --padding: 16px;
+  --border-radius: 8px;
+  --border-radius2: 0 0 8px 8px;
+  --border: 1px solid var(--color-4);
+  --shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+  --font-size-1: 2rem;
+  --font-size-2: 1.75rem;
+  --font-size-3: 1.5rem;
+  --font-size-4: 1.25rem;
+  --font-size-5: 1rem;
+}
+
+/* NORMALIZE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.divsMain {
+  padding: var(--padding);
+}
+
+/* FORM ADD */
+.form {
+  padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-5);
+  align-items: center;
+  border-radius: var(--border-radius2);
+}
+
+.form h1 {
+  color: var(--color-1);
+  font-size: var(--font-size-1);
+  margin-bottom: var(--padding);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--padding);
+  color: var(--color-1);
+  font-size: var(--font-size-4);
+  background-color: var(--color-4);
+  width: 100%;
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+}
+
+.form-group label {
+  margin-bottom: var(--padding);
+}
+
+.form-group input,
+.form-group select {
+  padding: var(--padding);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-1);
+  color: var(--color-5);
+  font-size: var(--font-size-4);
+  width: 100%;
+}
+
+.form button {
+  padding: var(--padding);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-1);
+  color: var(--color-5);
+  font-size: var(--font-size-4);
+  cursor: pointer;
+}
+
+/* READ INFOS */
+
+.read {
+  background-color: var(--color-5);
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding);
+  border-radius: var(--border-radius2);
+  align-items: center;
+}
+
+.readInfos {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-4);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--padding);
+  width: 100%;
+  color: var(--color-1);
+  margin-bottom: 50px;
+}
+
+.readInfos p {
+  margin-bottom: var(--padding);
+  font-size: var(--font-size-4);
+}
+
+.infosgap {
+  padding-left: 20px;
+}
