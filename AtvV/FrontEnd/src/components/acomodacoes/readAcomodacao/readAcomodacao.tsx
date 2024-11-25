@@ -9,9 +9,9 @@ import { link } from "fs";
 export default function ReadAcomodacao() {
     const [Quartos, setQuartos] = useState<QuartoType[]>([]);
 
-    const handleDelete = (id: number) => {
+    const handleDelete = async (id: number) => {
         try {
-            const response = links.deleteQuarto(id);
+            await links.deleteQuarto(id);
             const newQuartos = Quartos.filter((quarto) => quarto.id !== id);
             setQuartos(newQuartos);
             alert("Quarto deleted successfully.");
@@ -32,7 +32,7 @@ export default function ReadAcomodacao() {
             }
         };
         getQuartos();
-    })
+    }, []);	
 
     return (
         <div className="read">

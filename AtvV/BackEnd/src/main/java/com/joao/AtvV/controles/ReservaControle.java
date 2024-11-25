@@ -18,6 +18,7 @@ public class ReservaControle {
     @PostMapping("/criar")
     public ResponseEntity<ResponseModel> criarReserva(@RequestBody ReservaDTO reservaDTO) {
         try {
+            System.out.println(reservaDTO);
             return ResponseEntity.ok(new ResponseModel(reservaService.criarReserva(reservaDTO)));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new ResponseModel(HttpStatus.BAD_REQUEST ,e.getMessage()));

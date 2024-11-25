@@ -1,4 +1,5 @@
 import axios from "axios";
+import { read } from "fs";
 
 
 const api = axios.create({
@@ -19,4 +20,9 @@ export const links = {
     deleteQuarto: (id: number) => api.delete(`/quartos/deletar/${id}`),
     readQuarto: (id: number) => api.get(`/quartos/buscar/${id}`),
     readQuartos: () => api.get("/quartos/buscar"),
+    readQuartosDisponiveis: () => api.get("/quartos/buscarDisponiveis"),
+
+    // RESERVAS
+    createReserva: (data: any) => api.post("/reservas/criar", data),
+    readReservas: () => api.get("/reservas/buscar"),
 }
