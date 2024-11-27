@@ -25,11 +25,11 @@ function App() {
 
         <Route path='/addAcomodacoes' element={<AddAcomodacao />} />
         <Route path='/readAcomodacoes' element={<ReadAcomodacao />} />
-        <Route path='/editAcomodacoes' element={<EditAcomodacao />} />
+        <Route path='/editQuartos/:id' element={<EditAcomodacao />} />
 
         <Route path='/addHospetagens' element={<AddHospetagem />} />
         <Route path='/readHospetagens' element={<ReadHospetagem />} />
-        <Route path='/editHospetagens' element={<EditHospetagem />} />
+        <Route path='/editHospetagens/:id' element={<EditHospetagem />} />
         <Route path='*' element={<h1>Not Found</h1>} />
       </Routes>
     </Router>

@@ -45,7 +45,7 @@ export default function ReadAcomodacao() {
                 <p>Camas de casal: {quarto.quantidadeCamaCasal}</p>
                 <p>Camas de solteiro: {quarto.quantidadeCamaSolteiro}</p>
                 <p>Valor diaria: R$ {quarto.valorDiaria}</p>
-                <NavigateButtons navigateButtonName="Editar" navigateLink="/editQuartos" />
+                <NavigateButtons navigateButtonName="Editar" navigateLink={`/editQuartos/${quarto.id}`}/>
                 <NavigateButtons navigateButtonName="Deletar" onClick={() => handleDelete(quarto.id)} navigateLink={""} />
             </div>
         ))}

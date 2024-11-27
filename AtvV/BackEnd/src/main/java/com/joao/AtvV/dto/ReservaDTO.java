@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReservaDTO {
+    private Long id;
     private Long idCliente;
     private Long idQuarto;
     private LocalDate dataEntrada;

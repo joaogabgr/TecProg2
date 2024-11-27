@@ -40,11 +40,11 @@ export default function ReadHospetagem() {
                         {reserva.hospede.documentos.map((documento, index) => (
                             <p className="infosgap" key={index}>{documento.tipoDocumento}: {documento.numero}</p>
                         ))}
-                        <p>Entrada: {new Date(reserva.dataEntrada).toLocaleDateString('pt-BR')}</p>
-                        <p>Saída: {new Date(reserva.dataSaida).toLocaleDateString('pt-BR')}</p>
+                        <p>Entrada: {new Date(new Date(reserva.dataEntrada).setDate(new Date(reserva.dataEntrada).getDate() + 1)).toLocaleDateString('pt-BR')}</p>
+                        <p>Saída: {new Date(new Date(reserva.dataSaida).setDate(new Date(reserva.dataSaida).getDate() + 1)).toLocaleDateString('pt-BR')}</p>
                         <p>Valor Total: {reserva.valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                         <p>Status: {reserva.status ? "Ativo" : "Inativo"}</p>
-                        <NavigateButtons navigateButtonName="Editar" navigateLink="/editHospetagens" />
+                        <NavigateButtons navigateButtonName="Editar" navigateLink={`/editHospetagens/${reserva.id}`} />
                     </div>
                 )
             })}

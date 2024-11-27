@@ -25,4 +25,6 @@ export const links = {
     // RESERVAS
     createReserva: (data: any) => api.post("/reservas/criar", data),
     readReservas: () => api.get("/reservas/buscar"),
-}
+    readReserva: (id: number) => api.get(`/reservas/buscar/${id}`),
+    updateReserva: (data: any) => api.put(`/reservas/atualizar`, data),
+  }

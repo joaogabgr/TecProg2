@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ReservaService {
@@ -53,7 +54,6 @@ public class ReservaService {
             long dias = ChronoUnit.DAYS.between(reservaDTO.getDataEntrada(), reservaDTO.getDataSaida());
             reserva.setValorTotal(quarto.getValorDiaria() * dias);
             reserva.setStatus(true);
-            repositorioQuarto.save(quarto);
             return repositorioReserva.save(reserva);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
@@ -76,8 +76,40 @@ public class ReservaService {
         }
     }
 
-    public Reserva atualizarReserva(Reserva reserva) {
+    public Reserva atualizarReserva(ReservaDTO reservaDTO) {
         try {
+            Reserva reserva = repositorioReserva.findById(reservaDTO.getId()).orElseThrow(
+                () -> new RuntimeException("Reserva não encontrada")
+            );
+
+            Cliente cliente = repositorioCliente.findById(reservaDTO.getIdCliente()).orElseThrow(
+                    () -> new RuntimeException("Cliente não encontrado")
+            );
+
+            Quarto quarto = repositorioQuarto.findById(reservaDTO.getIdQuarto()).orElseThrow(
+                    () -> new RuntimeException("Quarto não encontrado")
+            );
+
+            Quarto quartoAntigo = repositorioQuarto.findById(reserva.getQuarto().getId()).orElseThrow(
+                    () -> new RuntimeException("Quarto não encontrado")
+            );
+
+            if (!quarto.getDisponivel() && !Objects.equals(quarto.getId(), quartoAntigo.getId())) {
+                throw new RuntimeException("Quarto não disponível");
+            } else {
+                quarto.setDisponivel(false);
+            }
+
+            reserva.setHospede(cliente);
+            reserva.setQuarto(quarto);
+            reserva.setDataEntrada(reservaDTO.getDataEntrada());
+            reserva.setDataSaida(reservaDTO.getDataSaida());
+
+            long dias = ChronoUnit.DAYS.between(reservaDTO.getDataEntrada(), reservaDTO.getDataSaida());
+            reserva.setValorTotal(quarto.getValorDiaria() * dias);
+
+            quartoAntigo.setDisponivel(true);
+            repositorioQuarto.save(quartoAntigo);
             return repositorioReserva.save(reserva);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());

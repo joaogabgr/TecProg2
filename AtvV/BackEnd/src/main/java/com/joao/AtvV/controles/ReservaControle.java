@@ -18,7 +18,6 @@ public class ReservaControle {
     @PostMapping("/criar")
     public ResponseEntity<ResponseModel> criarReserva(@RequestBody ReservaDTO reservaDTO) {
         try {
-            System.out.println(reservaDTO);
             return ResponseEntity.ok(new ResponseModel(reservaService.criarReserva(reservaDTO)));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new ResponseModel(HttpStatus.BAD_REQUEST ,e.getMessage()));
@@ -26,9 +25,9 @@ public class ReservaControle {
     }
 
     @PutMapping("/atualizar")
-    public ResponseEntity<ResponseModel> atualizarReserva(@RequestBody Reserva reserva) {
+    public ResponseEntity<ResponseModel> atualizarReserva(@RequestBody ReservaDTO reservaDTO) {
         try {
-            return ResponseEntity.ok(new ResponseModel(reservaService.atualizarReserva(reserva)));
+            return ResponseEntity.ok(new ResponseModel(reservaService.atualizarReserva(reservaDTO)));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new ResponseModel(HttpStatus.BAD_REQUEST, e.getMessage()));
         }
